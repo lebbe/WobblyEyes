@@ -4,15 +4,15 @@ WobblyEyes is a JavaScript library that creates a pair of animated eyes that fol
 
 ## Installation
 
-To use WobblyEyes, simply include the `src/initWobblyEyes.js` script in your HTML file:
+To use WobblyEyes, simply install it from npm:
 
-```html
-<script src="src/initWobblyEyes.js" async type="module"></script>
+```sh
+npm install wobblyeyes
 ```
 
 ## Usage
 
-1. Add a container element with the ID `wobblyEyes` to your HTML:
+1. Add a container element with the ID `wobblyeyes` to your HTML:
 
 ```html
 <div id="wobblyEyes"></div>
@@ -21,7 +21,7 @@ To use WobblyEyes, simply include the `src/initWobblyEyes.js` script in your HTM
 2. Initialize the `WobblyEyes` class in your JavaScript:
 
 ```js
-import { WobblyEyes } from "./src/index.js";
+import { WobblyEyes } from "wobblyeyes";
 
 const container = document.querySelector("#wobblyEyes");
 
