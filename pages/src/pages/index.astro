@@ -3,23 +3,113 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Wobbly Eyes">
-  <div id="test"></div>
-  <script>
-    import { WobblyEyes } from "wobblyeyes";
-	const container = document.getElementById("test");
-    new WobblyEyes(container, {
-		height: 200,
-		width: 100
-	});
-  </script>
-</Layout>
+  <div class="container">
+    <header>
+      <h1>
+        <div id="logo"></div>
+        Wobbly Eyes
+      </h1>
+      <nav class="navigation">
+        <ul>
+          <li><a href="https://github.com/lebbe/WobblyEyes">Github repo</a></li>
+          <li>
+            <a href="https://www.npmjs.com/package/wobblyeyes">NPM package</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="test"></div>
+      <script>
+        import { WobblyEyes } from "wobblyeyes";
+        const container = document.getElementById("test");
+        new WobblyEyes(container, {
+          height: 200,
+          width: 100,
+        });
 
+        const logo = document.getElementById("logo");
+        new WobblyEyes(logo, {
+          height: 40,
+          width: 20,
+          color: "red",
+        });
+      </script>
+    </main>
+    <footer>
+      <p>&copy; 2025 Lars-Erik Bruce/p></p>
+    </footer>
+  </div>
 
-<style>
-	#test {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 100vh;
+    }
+    #test {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+	  padding: 10px 20px;
+	  box-sizing: border-box;
+	  flex-wrap: wrap;
+    }
+
+	h1 {
+	  display: flex;
+	  flex-direction: row;
+	  gap: 20px;
+	  align-items: center;
+	  margin: 20px;
+	  font-family: 'Courier New', Courier, monospace;
+	  white-space: nowrap;
 	}
-</style>
+    .navigation {
+      display: flex;
+      justify-content: center;
+    }
+
+	.navigation ul {
+	  display: flex;
+	  gap: 20px;
+	}
+
+	.navigation ul li {
+	  list-style: none;
+	}
+
+	.navigation ul li a {
+	  text-decoration: none;
+	  padding: 10px;
+	  border: 2px solid transparent;
+	  border-radius: 5px;
+	  font-family: 'Courier New', Courier, monospace;
+	  font-weight: bold;
+	  white-space: nowrap;
+	}
+
+	.navigation ul li a:hover {
+		border: 2px solid #b87937;
+		background-color: #b87a3739;
+	}
+
+	footer {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  width: 100%;
+	  font-family: 'Courier New', Courier, monospace;
+	}
+  </style>
+</Layout>
