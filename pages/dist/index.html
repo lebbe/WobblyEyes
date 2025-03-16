@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.5.2"><title>Wobbly Eyes</title><style>html,body{margin:0;width:100%;height:100%}#test[data-astro-cid-j7pv25f6]{display:flex;justify-content:center;align-items:center;height:100vh}
+</style></head> <body data-astro-cid-sckkx6r4>  <div id="test" data-astro-cid-j7pv25f6></div> <script type="module">class p{eyes=[];constructor(e,t={}){this.outerContainer=e,this.container=document.createElement("div"),this.outerContainer.appendChild(this.container),this.options=Object.assign({eyeColor:"white",pupilColor:"black",eyelidColor:"#ffccaa",lashColor:"black",width:50,height:100},t),this.init()}init(){this.container.style.position="relative",this.container.style.width=`${this.options.width*2.2}px`,this.container.style.height=`${this.options.height*1.2}px`,this.container.style.display="flex",this.container.style.justifyContent="space-between",this.eyes=[];for(let e=0;e<2;e++){const t=document.createElement("div");t.classList.add("eye"),t.style.cssText=`
+                position: relative;
+                width: ${this.options.width}px;
+                height: ${this.options.height}px;
+                background: ${this.options.eyeColor};
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border: 2px solid black;
+            `;const s=document.createElement("div");s.classList.add("pupil"),s.style.cssText=`
+                width: 40%;
+                height: 40%;
+                background: ${this.options.pupilColor};
+                border-radius: 50%;
+                position: relative;
+                transition: transform 0.1s linear;
+            `;const i=document.createElement("div");i.classList.add("eyelid"),i.style.cssText=`
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 10%;
+                background: ${this.options.eyelidColor};
+                transition: height 0.2s ease-in-out;
+				border-bottom: 3px solid black;
+            `;const o=document.createElement("div");o.classList.add("eyelid"),o.style.cssText=`
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 2%;
+				background: ${this.options.eyelidColor};
+				transition: height 0.2s ease-in-out;
+				border-top: 2px solid black;
+			`,t.appendChild(s),t.appendChild(i),t.appendChild(o),this.container.appendChild(t),this.eyes.push({eye:t,pupil:s,eyelidUpper:i,eyelidLower:o})}this.trackMouse(),this.blink()}trackMouse(){document.addEventListener("mousemove",e=>{const{clientX:t,clientY:s}=e;this.eyes.forEach(({eye:i,pupil:o})=>{const n=i.getBoundingClientRect(),c=n.left+n.width/2,r=n.top+n.height/2,h=t-c,a=s-r,l=Math.atan2(a,h),d=Math.min(i.offsetWidth/4,Math.hypot(h,a)/8);o.style.transform=`translate(${Math.cos(l)*d}px, ${Math.sin(l)*d}px)`})})}blink(){setInterval(()=>{this.eyes.forEach(({eyelidUpper:e,eyelidLower:t})=>{e.style.height="70%",t.style.height="30%"}),setTimeout(()=>{this.eyes.forEach(({eyelidUpper:e,eyelidLower:t})=>{e.style.height="10%",t.style.height="2%"})},Math.random()*200+200)},Math.random()*5e3+2e3)}}const y=document.getElementById("test");new p(y,{height:200,width:100});</script>  </body></html> 

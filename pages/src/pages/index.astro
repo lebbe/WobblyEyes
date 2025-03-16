@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Wobbly Eyes">
+  <div id="test"></div>
+  <script>
+    import { WobblyEyes } from "wobblyeyes";
+	const container = document.getElementById("test");
+    new WobblyEyes(container, {
+		height: 200,
+		width: 100
+	});
+  </script>
+</Layout>
+
+
+<style>
+	#test {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+</style>
