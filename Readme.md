@@ -25,7 +25,7 @@ import { WobblyEyes } from "wobblyeyes";
 
 const container = document.querySelector("#wobblyEyes");
 
-new WobblyEyes(container, {
+const wobblyEyes = new WobblyEyes(container, {
   eyeColor: "white",
   pupilColor: "black",
   eyelidColor: "#ffccaa",
@@ -46,36 +46,7 @@ The `WobblyEyes` class accepts an options object to customize the appearance of 
 - `width`: The width of each eye (default: `50`).
 - `height`: The height of each eye (default: `100`).
 
-## Example
+## Cleaning up
 
-Here is a complete example of how to use WobblyEyes:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wobbly Eyes</title>
-    <script src="src/initWobblyEyes.js" async type="module"></script>
-  </head>
-  <body>
-    <div id="wobblyEyes"></div>
-  </body>
-</html>
-```
-
-```js
-import { WobblyEyes } from "./src/index.js";
-
-const container = document.querySelector("#wobblyEyes");
-
-new WobblyEyes(container, {
-  eyeColor: "white",
-  pupilColor: "black",
-  eyelidColor: "#ffccaa",
-  lashColor: "black",
-  width: 100,
-  height: 200,
-});
-```
+Make sure to call `wobblyEyes.destroy()` if you want to remove the wobbly eyes. If not,
+the DOM might get flooded with intervals and event handlers over time.
