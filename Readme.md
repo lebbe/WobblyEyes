@@ -1,6 +1,6 @@
 # WobblyEyes
 
-WobblyEyes is a JavaScript library that creates a pair of animated eyes that follow the mouse cursor and blink periodically.
+WobblyEyes is a JavaScript library that creates a pair of animated eyes that follow the mouse cursor and blink periodically. You can see a live example [here](https://lebbe.github.io/WobblyEyes/).
 
 ## Installation
 
