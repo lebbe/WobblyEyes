@@ -1,6 +1,7 @@
 // @ts-check
 
 export class WobblyEyes {
+  eyes = [];
   constructor(outerContainer, options = {}) {
     this.outerContainer = outerContainer;
     this.container = document.createElement("div");
@@ -11,8 +12,8 @@ export class WobblyEyes {
         pupilColor: "black",
         eyelidColor: "#ffccaa",
         lashColor: "black",
-        width: 100,
-        height: 50,
+        width: 50,
+        height: 100,
       },
       options
     );
@@ -64,7 +65,7 @@ export class WobblyEyes {
                 height: 10%;
                 background: ${this.options.eyelidColor};
                 transition: height 0.2s ease-in-out;
-				border-bottom: 2px solid black;
+				border-bottom: 3px solid black;
             `;
 
       const eyelidLower = document.createElement("div");
@@ -126,8 +127,3 @@ export class WobblyEyes {
     }, Math.random() * 5000 + 2000);
   }
 }
-
-// Bruk i et prosjekt:
-// import WobblyEyes from 'eyes';
-// const container = document.getElementById('eye-container');
-// new WobblyEyes(container, { eyeColor: 'blue' });
