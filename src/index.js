@@ -87,33 +87,36 @@ export class WobblyEyes {
       this.eyes.push({ eye, pupil, eyelidUpper, eyelidLower });
     }
 
-    this.trackMouse();
+    this.trackMouse = this.trackMouse.bind(this);
+    document.addEventListener("mousemove", this.trackMouse);
     this.blink();
   }
 
-  trackMouse() {
-    document.addEventListener("mousemove", (e) => {
-      const { clientX, clientY } = e;
-      this.eyes.forEach(({ eye, pupil }) => {
-        const rect = eye.getBoundingClientRect();
-        const eyeX = rect.left + rect.width / 2;
-        const eyeY = rect.top + rect.height / 2;
-        const deltaX = clientX - eyeX;
-        const deltaY = clientY - eyeY;
-        const angle = Math.atan2(deltaY, deltaX);
-        const distance = Math.min(
-          eye.offsetWidth / 4,
-          Math.hypot(deltaX, deltaY) / 8
-        );
-        pupil.style.transform = `translate(${Math.cos(angle) * distance}px, ${
-          Math.sin(angle) * distance
-        }px)`;
-      });
+  /**
+   *
+   * @param {MouseEvent} e
+   */
+  trackMouse(e) {
+    const { clientX, clientY } = e;
+    this.eyes.forEach(({ eye, pupil }) => {
+      const rect = eye.getBoundingClientRect();
+      const eyeX = rect.left + rect.width / 2;
+      const eyeY = rect.top + rect.height / 2;
+      const deltaX = clientX - eyeX;
+      const deltaY = clientY - eyeY;
+      const angle = Math.atan2(deltaY, deltaX);
+      const distance = Math.min(
+        eye.offsetWidth / 4,
+        Math.hypot(deltaX, deltaY) / 8
+      );
+      pupil.style.transform = `translate(${Math.cos(angle) * distance}px, ${
+        Math.sin(angle) * distance
+      }px)`;
     });
   }
 
   blink() {
-    setInterval(() => {
+    this.blinkInterval = setInterval(() => {
       this.eyes.forEach(({ eyelidUpper, eyelidLower }) => {
         eyelidUpper.style.height = "70%";
         eyelidLower.style.height = "30%";
@@ -125,5 +128,13 @@ export class WobblyEyes {
         });
       }, Math.random() * 200 + 200);
     }, Math.random() * 5000 + 2000);
+  }
+
+  destroy() {
+    document.removeEventListener("mousemove", this.trackMouse);
+    clearInterval(this.blinkInterval);
+    if (this.container.parentNode) {
+      this.outerContainer.removeChild(this.container);
+    }
   }
 }
